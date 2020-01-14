@@ -389,6 +389,21 @@ const getGl = (exglCtxId) => {
             enableLogging = enable;
         },
     });
+    Object.keys(gl).forEach((key) => {
+        if (typeof gl[key] == 'function' && key != 'getError') {
+            const fn = gl[key];
+            gl[key] = function () {
+                console.log(key, 'with args', JSON.stringify(Array.from(arguments)));
+                const result = fn.apply(gl, arguments);
+                console.log('result', result);
+                const err = gl.getError();
+                if (err) {
+                    console.warn(`${key} error${err}`);
+                }
+                return result;
+            };
+        }
+    });
     return gl;
 };
 const getContextId = (exgl) => {

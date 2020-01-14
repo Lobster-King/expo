@@ -180,7 +180,6 @@ public:
   }
 
   inline GLuint lookupObject(UEXGLObjectId exglObjId) noexcept {
-    EXGLSysLog("lookup object %d", exglObjId);
     auto iter = objects.find(exglObjId);
     return iter == objects.end() ? 0 : iter->second;
   }

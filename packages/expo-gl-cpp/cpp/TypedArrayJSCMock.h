@@ -1,11 +1,11 @@
 #pragma once
 
+#if ! __has_include(<JavaScriptCore/JSTypedArray.h>)
+
 #include <JavaScriptCore/JSValueRef.h>
 #include <JavaScriptCore/JSObjectRef.h>
 #include <JavaScriptCore/JSStringRef.h>
 #include <JavaScriptCore/JSContextRef.h>
-
-#if false
 
 //typedef enum {
 //    kJSTypedArrayTypeNone = 0,
